@@ -1,0 +1,29 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /kissAi
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+spring:
+  config:
+    import: optional:classpath:application-local.yml
+  application:
+    name: kissAi
+  ai:
+    chat:
+      memory:
+        repository:
+          jdbc:
+            platform: mysql
+            initialize-schema: always
+    dashscope:
+      api-key: ${DASHSCOPE_API_KEY}
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
