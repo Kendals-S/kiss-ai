@@ -19,6 +19,13 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 结构化输出示例。
+ *
+ * <p>方式：/outPut 使用 BeanOutputConverter，/outPutEntity 使用 entity(Class)，
+ * /outPutList 使用 ParameterizedTypeReference，/outPutMap 使用自定义 MapOutputConverter。</p>
+ * <p>注意：模型输出必须符合目标结构，否则转换可能失败；Map 场景最好在提示词中明确 key 的含义。</p>
+ */
 @RestController
 @RequestMapping("structure")
 public class StructureOutPutController implements InitializingBean {
@@ -29,6 +36,9 @@ public class StructureOutPutController implements InitializingBean {
     private ChatClient chatClient;
 
 
+    /**
+     * 使用 BeanOutputConverter 生成格式要求，再把模型文本转换为 Airplane。
+     */
     @GetMapping("outPut")
     public Airplane structureOutPut() {
         BeanOutputConverter<Airplane> beanOutputConverter = new BeanOutputConverter<>(Airplane.class);
@@ -48,6 +58,9 @@ public class StructureOutPutController implements InitializingBean {
     }
 
 
+    /**
+     * 使用 entity(Class) 直接获取单个 Airplane 对象，适合目标类型明确的场景。
+     */
     @GetMapping("outPutEntity")
     public Airplane structureOutPutEntity() {
         Prompt prompt = PromptTemplate.builder()
@@ -62,6 +75,9 @@ public class StructureOutPutController implements InitializingBean {
     }
 
 
+    /**
+     * 使用 ParameterizedTypeReference 保留 List<Airplane> 的泛型类型信息。
+     */
     @GetMapping("outPutList")
     public List<Airplane> structureOutPutList() {
         Prompt prompt = PromptTemplate.builder()
@@ -76,6 +92,9 @@ public class StructureOutPutController implements InitializingBean {
                 });
     }
 
+    /**
+     * 使用自定义 MapOutputConverter 转换 Map 结构，提示词中最好明确 key 的含义。
+     */
     @GetMapping("outPutMap")
     public Map<String, Airplane> structureOutPutMap() {
         Prompt prompt = PromptTemplate.builder()
@@ -90,6 +109,9 @@ public class StructureOutPutController implements InitializingBean {
     }
 
 
+    /**
+     * 初始化带日志 Advisor 的 ChatClient，便于学习观察请求和响应。
+     */
     @Override
     public void afterPropertiesSet() {
         chatClient = ChatClient.builder(dashScopeChatModel)
