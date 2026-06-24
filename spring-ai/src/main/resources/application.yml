@@ -21,6 +21,9 @@ spring:
             initialize-schema: always
     dashscope:
       api-key: ${DASHSCOPE_API_KEY}
+      chat:
+        options:
+          model: deepseek-v3
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
