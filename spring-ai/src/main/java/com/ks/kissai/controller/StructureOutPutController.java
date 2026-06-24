@@ -4,13 +4,13 @@ package com.ks.kissai.controller;
 import com.alibaba.cloud.ai.dashscope.chat.DashScopeChatModel;
 import com.ks.kissai.converter.MapOutputConverter;
 import com.ks.kissai.pojo.Airplane;
+import lombok.RequiredArgsConstructor;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.ai.converter.BeanOutputConverter;
 import org.springframework.beans.factory.InitializingBean;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,10 +28,10 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("structure")
+@RequiredArgsConstructor
 public class StructureOutPutController implements InitializingBean {
 
-    @Autowired
-    private DashScopeChatModel dashScopeChatModel;
+    private final DashScopeChatModel dashScopeChatModel;
 
     private ChatClient chatClient;
 

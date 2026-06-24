@@ -2,12 +2,12 @@ package com.ks.kissai.controller;
 
 import com.alibaba.cloud.ai.dashscope.chat.DashScopeChatModel;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.messages.SystemMessage;
 import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.prompt.ChatOptions;
 import org.springframework.ai.chat.prompt.Prompt;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,10 +24,10 @@ import reactor.core.publisher.Flux;
 @Slf4j
 @RestController
 @RequestMapping("/model")
+@RequiredArgsConstructor
 public class ChatModelController {
 
-    @Autowired
-    private DashScopeChatModel dashScopeChatModel;
+    private final DashScopeChatModel dashScopeChatModel;
 
     /**
      * 纯文本同步调用，只传用户输入，不附加系统角色和模型参数。
@@ -61,7 +61,6 @@ public class ChatModelController {
                 .build();
         return dashScopeChatModel.call(prompt).getResult().getOutput().getText();
     }
-
 
 
     /**

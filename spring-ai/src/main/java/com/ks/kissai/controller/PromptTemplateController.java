@@ -2,11 +2,11 @@ package com.ks.kissai.controller;
 
 
 import com.alibaba.cloud.ai.dashscope.chat.DashScopeChatModel;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.beans.factory.InitializingBean;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,10 +25,10 @@ import java.util.HashMap;
 @Slf4j
 @RestController
 @RequestMapping("/promptTemplate")
+@RequiredArgsConstructor
 public class PromptTemplateController implements InitializingBean {
 
-    @Autowired
-    private DashScopeChatModel dashScopeChatModel;
+    private final DashScopeChatModel dashScopeChatModel;
 
     private ChatClient chatClient;
 

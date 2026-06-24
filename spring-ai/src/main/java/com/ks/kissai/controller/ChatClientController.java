@@ -1,10 +1,10 @@
 package com.ks.kissai.controller;
 
 import com.alibaba.cloud.ai.dashscope.chat.DashScopeChatModel;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.beans.factory.InitializingBean;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RestController
 @RequestMapping("/client")
+@RequiredArgsConstructor
 public class ChatClientController implements InitializingBean {
 
-    @Autowired
-    private DashScopeChatModel dashScopeChatModel;
+    private final DashScopeChatModel dashScopeChatModel;
 
     private ChatClient chatClient;
 
