@@ -21,6 +21,7 @@ public class JdbcChatMemoryConfiguration {
         return MessageWindowChatMemory
                 .builder()
                 .chatMemoryRepository(jdbcChatMemoryRepository)
+                .maxMessages(100)
                 .build();
     }
 }
