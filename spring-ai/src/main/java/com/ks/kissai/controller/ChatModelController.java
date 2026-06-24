@@ -1,7 +1,6 @@
 package com.ks.kissai.controller;
 
 import com.alibaba.cloud.ai.dashscope.chat.DashScopeChatModel;
-import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.messages.SystemMessage;
@@ -67,9 +66,8 @@ public class ChatModelController {
      * 流式调用返回 Flux，前端需要按增量内容消费。
      */
     @GetMapping("/stream")
-    public Flux<String> callStreamString(String message, HttpServletResponse response) {
+    public Flux<String> callStreamString(String message) {
         log.info("stream message: {}", message);
-        response.setCharacterEncoding("UTF-8");
         return dashScopeChatModel.stream(message);
     }
 }
