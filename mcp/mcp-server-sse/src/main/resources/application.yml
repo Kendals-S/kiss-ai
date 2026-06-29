@@ -1,0 +1,27 @@
+server:
+  port: 8082
+  servlet:
+    context-path: /kissAi/sse
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+spring:
+  application:
+    name: mcpSee
+  ai:
+    mcp:
+      server:
+        base-url: http://127.0.0.1:8082/kissAi/sse
+        enabled: true
+        name: mcpSee
+        version: 1.0.0
+        type: SYNC
+        capabilities:
+          tool:  true
+          resource: false
+          prompt: false
+          completion: false
+        sse-message-endpoint: /mcp/message  # 客户端发送消息的HTTP端点
+        sse-endpoint: /mcp/sse              # 客户端订阅SSE的端点
