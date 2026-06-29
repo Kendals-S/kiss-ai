@@ -1,0 +1,28 @@
+server:
+  port: 8083
+  servlet:
+    context-path: /kissAi/streamable
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+spring:
+  application:
+    name: mcpStreamable
+  ai:
+    mcp:
+      server:
+        base-url: http://127.0.0.1:8082/kissAi/streamable
+        enabled: true
+        name: mcpStreamable
+        version: 1.0.0
+        type: SYNC
+        protocol: streamable
+        instructions: "这个服务用来查询王者荣耀英雄语音"
+        resource-change-notification: true
+        tool-change-notification: true
+        prompt-change-notification: true
+        streamable-http:
+          mcp-endpoint: /api/mcp
+          keep-alive-interval: 30s
