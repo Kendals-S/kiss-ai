@@ -1,6 +1,6 @@
-package com.ks.mcp.server.sse.config;
+package com.ks.mcp.server.streamable.config;
 
-import com.ks.mcp.server.sse.service.StdioToolService;
+import com.ks.mcp.server.streamable.service.StdioToolService;
 import org.springframework.ai.tool.ToolCallbackProvider;
 import org.springframework.ai.tool.method.MethodToolCallbackProvider;
 import org.springframework.context.annotation.Bean;

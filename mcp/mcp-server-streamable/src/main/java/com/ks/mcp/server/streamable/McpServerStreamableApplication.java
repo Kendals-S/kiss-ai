@@ -1,4 +1,4 @@
-package com.ks.mcp.server.sse;
+package com.ks.mcp.server.streamable;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

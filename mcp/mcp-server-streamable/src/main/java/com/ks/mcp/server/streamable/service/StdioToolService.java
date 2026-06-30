@@ -1,7 +1,7 @@
-package com.ks.mcp.server.sse.service;
+package com.ks.mcp.server.streamable.service;
 
-import com.ks.mcp.server.sse.pojo.R;
-import com.ks.mcp.server.sse.pojo.WzryMusicVO;
+import com.ks.mcp.server.streamable.pojo.R;
+import com.ks.mcp.server.streamable.pojo.WzryMusicVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.tool.annotation.Tool;
