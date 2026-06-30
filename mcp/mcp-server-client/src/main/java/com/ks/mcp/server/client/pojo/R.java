@@ -1,4 +1,4 @@
-package com.ks.mcp.server.sse.pojo;
+package com.ks.mcp.server.client.pojo;
 
 import com.fasterxml.jackson.annotation.JsonPropertyDescription;
 

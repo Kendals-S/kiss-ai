@@ -1,0 +1,38 @@
+server:
+  port: 8084
+  servlet:
+    context-path: /kissAi/client
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+spring:
+  application:
+    name: mcpClient
+  ai:
+    mcp:
+      client:
+        enabled: true
+        name: mcpClient
+        version: 1.0.0
+        request-timeout: 60s
+        type: sync
+        stdio:
+          connections:
+            wzryMusic-stdio:
+              command: java
+              args:
+                - -jar
+                - "E:\\Kendals Project\\kiss-ai\\mcp\\mcp-server-stdio\\target\\mcp-server-stdio-1.0.0-SNAPSHOT.jar"
+        sse:
+          connections:
+            wzryMusic-sse:
+              url: http://127.0.0.1:8082/kissAi/sse
+              sse-endpoint: /mcp/sse
+
+        streamable-http:
+          connections:
+            wzryMusic-streamable:
+              url: http://127.0.0.1:8083/kissAi/streamable
+              endpoint: /api/mcp
